@@ -13,7 +13,7 @@ O programa é divido em funções que ficam no diretório `src/functions`. A pri
 ## Avisos
 
 1. O input que é feito no início do programa não aceita carateres especiais. Então não é possível fazer certas pesquisas no Wikipedia do brasil em que as palavras precisam acento.
-2. A API que é feita a requisição para gerar o resumo precisa de uma API KEY que não foi upada para que minha API KEY não fosse usada por vocês. Caso queiram usar, gerem sua API KEY no site da API que é o site [smmry.com](https://smmry.com/). A Geração da API KEY é gratuita e você pode fazer até 100 requisições por dia. Você também pode gerar uma API KEY paga. Quando você gerar sua API KEY, crie uma pasta chamada `keys` em `src` e coloque nela um arquivo `keys.json` quem terá a oportunidade ``"smmry_api_key"`` que tem como valor sua API KEY que foi gerada. E assim você pode gerar seus resumos.
+2. A API que é feita a requisição para gerar o resumo precisa de uma API KEY que não foi upada para que minha API KEY não fosse usada por vocês. Caso queiram usar, gerem sua API KEY no site da API que é o site [smmry.com](https://smmry.com/). A Geração da API KEY é gratuita e você pode fazer até 100 requisições por dia. Você também pode gerar uma API KEY paga. O programa irá solicitar sua API KEY na primeira vez que você executá-lo.
 
 ## Project setup
 

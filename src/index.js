@@ -2,9 +2,18 @@ const readline = require('readline-sync')
 const searchInWikipedia = require('./functions/searchInWikipedia')
 const htmlGenerate = require('./functions/htmlGenerate')
 const generatePDF = require('./functions/generatePDF')
-const textSummarize = require('./functions/textSummarize')
+const checkKeyFile = require('./functions/checkKeyFile')
+const createKeyFile = require('./functions/createKeyFile')
 
 async function main() {
+
+  if(!checkKeyFile()) {
+    console.log("Para gerar os resumos dos trabalhos, é necessário ter uma API KEY do site https://smmry.com/")
+    console.log("Entre no site, gere a sua KEY e cole aqui para gerar o arquivo de chaves do app")
+    const apykey = readline.question('Cole aqui sua chave: ')
+    createKeyFile(apykey)
+  }
+  const textSummarize = require('./functions/textSummarize')
   const term = readline.question('Qual termo deseja procurar em Wikipedia.org? ')
 
   console.log(`Procurando pelo termo \"${term}\" em pt.wikipedia.org...`)
@@ -19,11 +28,12 @@ async function main() {
     const data = {title, textsArray}
 
     console.log('Gerando arquivo PDF...')
-    htmlGenerate(data, 'src\\template\\index.ejs', (html, error) => {
+    htmlGenerate(data, 'src/template/index.ejs', (html, error) => {
       if (error) {
         console.error('Erro ao gerar o HTML')
+        console.log(error)
       } else {
-        generatePDF(html, `src\\pdfs\\${term.replace(' ', '_').toLowerCase()}.pdf`, error => {
+        generatePDF(html, `src/pdfs/${term.replace(' ', '_').toLowerCase()}.pdf`, error => {
           if (error) {
             console.log('Erro ao gerar o PDF.')
           } else {
